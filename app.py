@@ -4,21 +4,22 @@ import random
 def coinToss():
     return random.randrange(0,2)
 
+def randomTurn():
+    return random.randrange(0,91)
+
 def moveTurtle(turtle, step):
     direction = coinToss()
     if direction == 0:
-        turtle.right(90)
+        turtle.right(randomTurn())
     else:
-        turtle.left(90)
+        turtle.left(randomTurn())
     turtle.forward(step)
 
 def isOnScreen(window,turtle):
-    # minus step - so the turtle does not disappear. if it hits the wall, it is done
     leftBound = -(window.window_width() / 2)
     rightBound = window.window_width() / 2
     topBound = window.window_height() / 2
     bottomBound = -(window.window_height() / 2)
-    print(leftBound, rightBound, topBound, bottomBound)
 
     turtleX = turtle.xcor()
     turtleY = turtle.ycor()
@@ -47,11 +48,8 @@ fiat.speed(10)
 skoda.color("blue")
 skoda.speed(10)
 
-turtlesOnScreen = isOnScreen(window,fiat) and isOnScreen(window, skoda)
-
-while turtlesOnScreen:
+while isOnScreen(window,fiat) and isOnScreen(window, skoda):
     moveTurtle(fiat, 30)
     moveTurtle(skoda, 30)
-    turtlesOnScreen = isOnScreen(window,fiat) and isOnScreen(window, skoda)
 
 window.exitonclick()
