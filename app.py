@@ -33,7 +33,7 @@ def isOnScreen(window,turtle):
 
     return exit_y and exit_x
 
-# in stead of checking the window size, I am setting it so it does not take the automatic 0.5 when I have two screens and becomes HUGE
+# setting window size to avoid 0.5 that is messy on dual monitor setup
 
 window = turtle.Screen()
 window_height = 600
